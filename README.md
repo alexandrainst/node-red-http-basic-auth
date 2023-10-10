@@ -43,3 +43,8 @@ With File config type you must specify the following:
 ### Shared config
 
 ![cred.png](images/cred.png)
+
+## Credits
+
+Forked from [endemecio02/node-red-contrib-httpauth](https://github.com/endemecio02/node-red-contrib-httpauth) (abandonned)
+by [Alexandre Alapetite](https://github.com/Alkarex) for the [Alexandra Institute](https://alexandra.dk/), October 2023.
