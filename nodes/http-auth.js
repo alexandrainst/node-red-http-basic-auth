@@ -88,5 +88,5 @@ module.exports = function (RED) {
 		});
 	}
 
-	RED.nodes.registerType('node-red-contrib-httpauth', HttpAuthNode);
+	RED.nodes.registerType('node-red-http-basic-auth', HttpAuthNode);
 };

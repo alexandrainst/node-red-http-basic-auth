@@ -28,13 +28,13 @@
 		"url": "https://github.com/alexandrainst/node-red-http-basic-auth.git"
 	},
 	"engines": {
-		"node": ">=10"
+		"node": ">=12"
 	},
 	"node-red": {
 		"nodes": {
-			"node-red-contrib-httpauth": "nodes/http-auth.js",
-			"node-red-contrib-httpauthcred": "nodes/http-auth-cred.js",
-			"node-red-contrib-httpauthfile": "nodes/http-auth-file.js"
+			"node-red-http-basic-auth": "nodes/http-auth.js",
+			"node-red-http-basic-auth-cred": "nodes/http-auth-cred.js",
+			"node-red-http-basic-auth-file": "nodes/http-auth-file.js"
 		}
 	},
 	"devDependencies": {

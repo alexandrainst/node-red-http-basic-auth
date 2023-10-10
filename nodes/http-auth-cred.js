@@ -10,5 +10,5 @@ module.exports = function (RED) {
 		this.hashed = config.hashed;
 	}
 
-	RED.nodes.registerType('node-red-contrib-httpauthcred', HttpAuthCredNode);
+	RED.nodes.registerType('node-red-http-basic-auth-cred', HttpAuthCredNode);
 };

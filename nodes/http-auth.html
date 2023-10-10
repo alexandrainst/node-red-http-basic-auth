@@ -1,13 +1,13 @@
 <script type="text/javascript">
 	/* global RED:false */
-	RED.nodes.registerType('node-red-contrib-httpauth', {
+	RED.nodes.registerType('node-red-http-basic-auth', {
 		category: 'function',
 		inputs: 1,
 		outputs: 1,
 		defaults: {
 			name: { value: '' },
-			file: { value: '', type: 'node-red-contrib-httpauthfile', required: false },
-			cred: { value: '', type: 'node-red-contrib-httpauthcred', required: false },
+			file: { value: '', type: 'node-red-http-basic-auth-file', required: false },
+			cred: { value: '', type: 'node-red-http-basic-auth-cred', required: false },
 			realm: { value: '' },
 			username: { value: '' },
 			password: { value: '' },
@@ -21,7 +21,7 @@
 	});
 </script>
 
-<script type="text/x-red" data-template-name="node-red-contrib-httpauth">
+<script type="text/x-red" data-template-name="node-red-http-basic-auth">
 	<div class="form-row">
 		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
 		<input type="text" id="node-input-name" />
@@ -55,7 +55,7 @@
 	</div>
 </script>
 
-<script type="text/x-red" data-help-name="node-red-contrib-httpauth">
+<script type="text/x-red" data-help-name="node-red-http-basic-auth">
 <p>Node-RED node for HTTP Basic Auth</p>
 
 <p>
@@ -73,30 +73,30 @@
 </p>
 <p>There are three type of configuration:</p>
 <ol>
-	<li>File: the user credentials are stored in a file. (mutliple credentials)</li>
-	<li>Shared: credentials shared which multiple nodes. (one credential)</li>
-	<li>Not Shared: each node has it's own credentials. (one credential)</li>
+	<li><i>File</i>: the user credentials are stored in a file. (multiple credentials)</li>
+	<li><i>Shared</i>: credentials shared which multiple nodes. (one credential)</li>
+	<li><i>Not Shared</i>: each node has it's own credentials. (one credential)</li>
 </ol>
 
 <p>With all three config types you must specify the following:</p>
 <ul>
-	<li>Realm: what realm will be used with this node</li>
-	<li>Hashed: are the passwords in the Password field or in the credentials file hashed.</li>
+	<li><i>Realm</i>: what realm will be used with this node</li>
+	<li><i>Hashed</i>: are the passwords in the Password field or in the credentials file hashed.</li>
 </ul>
 
-<p>With Shared and Not Shared config types you must specify the following:</p>
+<p>With <i>Shared</i> and <i>Not Shared</i> config types you must specify the following:</p>
 <ul>
-	<li>Username: the username</li>
+	<li><i>Username</i>: the username</li>
 	<li>
-		Password: the password<br />
+		<i>Password</i>: the password.<br />
 		If you entered a hashed password you must check the Hashed checkbox.
 	</li>
 </ul>
 
-<p>With File config type you must specify the following:</p>
+<p>With <i>File</i> config type you must specify the following:</p>
 <ul>
 	<li>
-		File: location of the file containing the credentials relative to the presently working directory<br />
+		<i>File</i>: location of the file containing the credentials relative to the presently working directory.<br />
 		If the password are hashed you must check the Hashed checkbox.
 	</li>
 </ul>
