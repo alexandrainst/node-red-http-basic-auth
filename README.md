@@ -1,4 +1,4 @@
-# node-red-contrib-httpauth
+# node-red-http-basic-auth
 
 Node-RED node for HTTP Basic Auth.
 
