@@ -13,9 +13,9 @@ It is to be used in conjunction with an [HTTP Input node](https://cookbook.noder
 
 There are three type of configuration:
 
-1. *File*: the user credentials are stored in a file. (multiple credentials)
+1. *Not Shared*: each node has it's own credentials. (one credential)
 2. *Shared*: credentials shared which multiple nodes. (one credential)
-3. *Not Shared*: each node has it's own credentials. (one credential)
+3. *File*: the user credentials are stored in a file. (multiple credentials)
 
 With all three config types you must specify the following:
 
