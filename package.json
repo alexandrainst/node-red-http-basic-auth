@@ -23,7 +23,6 @@
 		}
 	],
 	"license": "GPL-2.0",
-	"dependencies": {},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/alexandrainst/node-red-http-basic-auth.git"
@@ -37,5 +36,19 @@
 			"node-red-contrib-httpauthcred": "nodes/http-auth-cred.js",
 			"node-red-contrib-httpauthfile": "nodes/http-auth-file.js"
 		}
+	},
+	"devDependencies": {
+		"eslint": "^8.51.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-html": "^7.1.0",
+		"eslint-plugin-import": "^2.28.1",
+		"eslint-plugin-n": "^16.1.0",
+		"eslint-plugin-promise": "^6.1.1"
+	},
+	"scripts": {
+		"eslint": "eslint --ext .js,.html .",
+		"eslint_fix": "eslint --fix --ext .js,.html .",
+		"fix": "npm run eslint_fix",
+		"test": "npm run eslint"
 	}
 }

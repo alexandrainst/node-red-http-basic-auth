@@ -1,5 +1,5 @@
 module.exports = function (RED) {
-	"use strict";
+	'use strict';
 
 	function HttpAuthCredNode(config) {
 		RED.nodes.createNode(this, config);
@@ -11,5 +11,5 @@ module.exports = function (RED) {
 		this.hashed = config.hashed;
 	}
 
-	RED.nodes.registerType("node-red-contrib-httpauthcred", HttpAuthCredNode);
+	RED.nodes.registerType('node-red-contrib-httpauthcred', HttpAuthCredNode);
 };
