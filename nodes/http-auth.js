@@ -7,13 +7,27 @@ try {
 	bcrypt = require('bcryptjs');
 }
 
+function passwordCompare(plain, hash) {
+	if (plain == '' || hash == '') {
+		return false;
+	}
+	if (plain === hash) {
+		return true;
+	}
+
+	// Compatibility work-around for 'bcrypt' library
+	hash = hash.replace(/^\$2[x|y]\$/, '$2b$');
+
+	return bcrypt.compareSync(plain, hash);
+}
+
 function basicAuth(authStr, node, msg) {
 	const values = Buffer.from(authStr, 'base64').toString().split(':');
 	const username = values[0];
 	const password = values[1];
 	const user = node.httpauthconf.getUser(node.httpauthconf.realm, username);
 
-	if (user !== null && (password === user.password || bcrypt.compareSync(password, user.password))) {
+	if (user !== null && passwordCompare(password, user.password)) {
 		node.send(msg);
 	} else {
 		unAuth(node, msg);
