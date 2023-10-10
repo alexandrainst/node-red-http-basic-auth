@@ -1,15 +1,27 @@
 {
 	"name": "@alexandrainst/node-red-http-basic-auth",
 	"version": "2.0.0",
-	"description": "Node which implements HTTP Basic/Digest Authorization.",
+	"description": "Node-RED node for HTTP Basic Authorization",
 	"keywords": [
 		"node-red",
+		"node-red-contrib",
 		"http",
-		"authorization",
 		"basic",
-		"digest"
+		"auth",
+		"authorization",
+		"rfc2617",
+		"rfc7617"
 	],
-	"author": "Endemecio Santana",
+	"author": {
+		"name": "Alexandre Alapetite",
+		"url": "https://github.com/Alkarex"
+	},
+	"contributors": [
+		{
+			"name": "Endemecio Santana",
+			"url": "https://github.com/endemecio02"
+		}
+	],
 	"license": "GPL-2.0",
 	"dependencies": {},
 	"repository": {
