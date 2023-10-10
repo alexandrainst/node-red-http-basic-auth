@@ -1,4 +1,4 @@
-# node-red-http-basic-auth
+# @alexandrainst/node-red-http-basic-auth
 
 [Node-RED](https://nodered.org/) node for HTTP Basic Auth.
 
