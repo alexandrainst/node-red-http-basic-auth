@@ -26,12 +26,41 @@ With *Simple* and *Shared* config types you must specify the following:
 
 - *Username*: the username
 - *Password*: the password may be in plain-text or hashed (only bcrypt is supported).
+	Example of hashed password `test`:
+
+```plain
+$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
+```
 
 With *File* config type you must specify the following:
 
 - File: location of the file containing the credentials relative to the presently working directory.
 	The format for each line is `user:realm:password`.
 	The passwords may be in plain-text or hashed (only bcrypt is supported).
+	Example of file:
+
+```plain
+user1:application1:test
+user2:application1:$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
+```
+
+## Hints
+
+Here are examples to create hashed passwords:
+
+### In Linux Debian / Ubuntu command line
+
+```sh
+sudo apt install apache2-utils
+htpasswd -nbB -C 10 '' 'my-password' | cut -d: -f2
+```
+
+### With Node.js
+
+```sh
+npm install bcryptjs
+node -e "console.log(require('bcryptjs').hashSync('my-password', 10));"
+```
 
 ## Credits
 
