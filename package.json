@@ -31,7 +31,7 @@
 		"node": ">=12"
 	},
 	"node-red": {
-		"version": ">=12",
+		"version": ">=12.0.0",
 		"nodes": {
 			"http-basic-auth": "nodes/http-auth.js",
 			"http-basic-auth-cred": "nodes/http-auth-cred.js",
