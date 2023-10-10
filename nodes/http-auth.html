@@ -8,7 +8,6 @@
 			name: { value: '' },
 			file: { value: '', type: 'node-red-contrib-httpauthfile', required: false },
 			cred: { value: '', type: 'node-red-contrib-httpauthcred', required: false },
-			authType: { value: 'Basic' },
 			realm: { value: '' },
 			username: { value: '' },
 			password: { value: '' },
@@ -39,13 +38,6 @@
 	</div>
 	<hr />
 	<div class="form-row">
-		<label for="node-input-authType"><i class="fa fa-list"></i> Auth Type</label>
-		<select id="node-input-authType">
-			<option value="Basic">Basic</option>
-			<option value="Digest">Digest</option>
-		</select>
-	</div>
-	<div class="form-row">
 		<label for="node-input-realm"><i class="fa fa-globe"></i> Realm</label>
 		<input type="text" id="node-input-realm" />
 	</div>
@@ -64,9 +56,12 @@
 </script>
 
 <script type="text/x-red" data-help-name="node-red-contrib-httpauth">
-<p>Node-RED node for HTTP Basic/Digest Auth</p>
+<p>Node-RED node for HTTP Basic Auth</p>
 
-<p>This Node-RED module performs Basic and Digest authentication.<br />It is to be used in conjunction with an http input node.</p>
+<p>
+	This Node-RED module performs Basic authentication.
+	It is to be used in conjunction with an HTTP Input node.
+</p>
 
 <p>
 	<img src="https://raw.githubusercontent.com/alexandrainst/node-red-http-basic-auth/main/images/flow.png" />
@@ -85,13 +80,8 @@
 
 <p>With all three config types you must specify the following:</p>
 <ul>
-	<li>Auth Type: what authentication type will be used: Basic, Digest</li>
 	<li>Realm: what realm will be used with this node</li>
-	<li>
-		Hashed: are the passwords in the Password field or in the credentials file hashed.<br />
-		This field is only relavent if Auth Type is Digest. It has no effect on Basic.<br />
-		Hash format: MD5(Username:Realm:Password)
-	</li>
+	<li>Hashed: are the passwords in the Password field or in the credentials file hashed.</li>
 </ul>
 
 <p>With Shared and Not Shared config types you must specify the following:</p>

@@ -36,7 +36,6 @@ module.exports = function (RED) {
 			}
 		}
 
-		this.authType = config.authType;
 		this.realm = config.realm;
 		this.getUser = function (_realm, _username) {
 			const _realmL = _realm.trim().toLowerCase();

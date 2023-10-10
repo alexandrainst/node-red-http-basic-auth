@@ -1,9 +1,9 @@
 # node-red-contrib-httpauth
 
-Node-RED node for HTTP Basic/Digest Auth
+Node-RED node for HTTP Basic Auth.
 
-This Node-RED module performs Basic and Digest authentication.
-It is to be used in conjunction with an http input node.
+This Node-RED module performs HTTP Basic authentication.
+It is to be used in conjunction with an HTTP Input node.
 
 ![flow.png](images/flow.png)
 
@@ -19,11 +19,8 @@ There are three type of configuration:
 
 With all three config types you must specify the following:
 
- - Auth Type: what authentication type will be used: Basic, Digest
  - Realm: what realm will be used with this node
  - Hashed: are the passwords in the Password field or in the credentials file hashed.
-   This field is only relavent if Auth Type is Digest. It has no effect on Basic.
-   Hash format: MD5(Username:Realm:Password)
 
 With Shared and Not Shared config types you must specify the following:
 

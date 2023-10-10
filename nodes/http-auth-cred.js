@@ -4,7 +4,6 @@ module.exports = function (RED) {
 	function HttpAuthCredNode(config) {
 		RED.nodes.createNode(this, config);
 
-		this.authType = config.authType;
 		this.realm = config.realm;
 		this.username = config.username;
 		this.password = config.password;
