@@ -108,5 +108,5 @@ module.exports = function (RED) {
 		});
 	}
 
-	RED.nodes.registerType('node-red-http-basic-auth', HttpAuthNode);
+	RED.nodes.registerType('http-basic-auth', HttpAuthNode);
 };

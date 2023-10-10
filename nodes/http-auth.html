@@ -1,13 +1,13 @@
 <script type="text/javascript">
 	/* global RED:false */
-	RED.nodes.registerType('node-red-http-basic-auth', {
+	RED.nodes.registerType('http-basic-auth', {
 		category: 'function',
 		inputs: 1,
 		outputs: 1,
 		defaults: {
 			name: { value: '' },
-			file: { value: '', type: 'node-red-http-basic-auth-file', required: false },
-			cred: { value: '', type: 'node-red-http-basic-auth-cred', required: false },
+			file: { value: '', type: 'http-basic-auth-file', required: false },
+			cred: { value: '', type: 'http-basic-auth-cred', required: false },
 			realm: { value: '' },
 			username: { value: '' },
 			password: { value: '' },
@@ -20,7 +20,7 @@
 	});
 </script>
 
-<script type="text/x-red" data-template-name="node-red-http-basic-auth">
+<script type="text/x-red" data-template-name="http-basic-auth">
 	<div class="form-row">
 		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
 		<input type="text" id="node-input-name" />
@@ -63,7 +63,7 @@
 	</fieldset>
 </script>
 
-<script type="text/x-red" data-help-name="node-red-http-basic-auth">
+<script type="text/x-red" data-help-name="http-basic-auth">
 <p>Node-RED node for HTTP Basic Auth</p>
 
 <p>

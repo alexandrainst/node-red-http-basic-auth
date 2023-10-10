@@ -1,6 +1,6 @@
 {
 	"name": "@alexandrainst/node-red-http-basic-auth",
-	"version": "2.0.1",
+	"version": "2.1.0",
 	"description": "Node-RED node for HTTP Basic Authorization",
 	"keywords": [
 		"node-red",
@@ -33,9 +33,9 @@
 	"node-red": {
 		"version": ">=12",
 		"nodes": {
-			"node-red-http-basic-auth": "nodes/http-auth.js",
-			"node-red-http-basic-auth-cred": "nodes/http-auth-cred.js",
-			"node-red-http-basic-auth-file": "nodes/http-auth-file.js"
+			"http-basic-auth": "nodes/http-auth.js",
+			"http-basic-auth-cred": "nodes/http-auth-cred.js",
+			"http-basic-auth-file": "nodes/http-auth-file.js"
 		}
 	},
 	"dependencies": {

@@ -9,5 +9,5 @@ module.exports = function (RED) {
 		this.password = config.password;
 	}
 
-	RED.nodes.registerType('node-red-http-basic-auth-cred', HttpAuthCredNode);
+	RED.nodes.registerType('http-basic-auth-cred', HttpAuthCredNode);
 };
