@@ -4,19 +4,19 @@
 		inputs: 1,
 		outputs: 1,
 		defaults: {
-			name: {value: ""},
-			file: {value: "", type: "node-red-contrib-httpauthfile", required: false},
-			cred: {value: "", type: "node-red-contrib-httpauthcred", required: false},
-			authType: {value: "Basic"},
-			realm: {value: ""},
-			username: {value: ""},
-			password: {value: ""},
-			hashed: {value: false}
+			name: { value: "" },
+			file: { value: "", type: "node-red-contrib-httpauthfile", required: false },
+			cred: { value: "", type: "node-red-contrib-httpauthcred", required: false },
+			authType: { value: "Basic" },
+			realm: { value: "" },
+			username: { value: "" },
+			password: { value: "" },
+			hashed: { value: false }
 		},
 		color: "#E7E7AE",
 		icon: "white-globe.png",
-		label: function() {return this.name.trim() || "http auth";},
-		labelStyle: function() {return this.name.trim() ? "node_label_italic" : "";},
+		label: function () { return this.name.trim() || "http auth"; },
+		labelStyle: function () { return this.name.trim() ? "node_label_italic" : ""; },
 		paletteLabel: "http auth"
 	});
 </script>

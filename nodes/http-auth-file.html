@@ -2,13 +2,13 @@
 	RED.nodes.registerType("node-red-contrib-httpauthfile", {
 		category: "config",
 		defaults: {
-			name: {value: ""},
-			authType: {value: "Basic", required: true},
-			realm: {value: "", required: true},
-			filePath: {value: "", required: true},
-			hashed: {value: false, required: true}
+			name: { value: "" },
+			authType: { value: "Basic", required: true },
+			realm: { value: "", required: true },
+			filePath: { value: "", required: true },
+			hashed: { value: false, required: true }
 		},
-		label: function() {return this.name.trim() || "[" + this.authType + "] " + this.realm.trim() + ":" + this.filePath.trim();}
+		label: function () { return this.name.trim() || "[" + this.authType + "] " + this.realm.trim() + ":" + this.filePath.trim(); }
 	});
 </script>
 

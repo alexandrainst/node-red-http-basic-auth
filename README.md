@@ -1,4 +1,5 @@
 # node-red-contrib-httpauth
+
 Node-RED node for HTTP Basic/Digest Auth
 
 This Node-RED module performs Basic and Digest authentication.
@@ -6,7 +7,7 @@ It is to be used in conjunction with an http input node.
 
 ![flow.png](images/flow.png)
 
-## Config ##
+## Config
 
 ![flow.png](images/config.png)
 
@@ -35,10 +36,10 @@ With File config type you must specify the following:
  - File: location of the file containing the credentials relative to the presently working directory
    If the password are hashed you must check the Hashed checkbox.
 
-### File Configuration ###
+### File Configuration
 
 ![file.png](images/file.png)
 
-### Shared config ###
+### Shared config
 
 ![cred.png](images/cred.png)

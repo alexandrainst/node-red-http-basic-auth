@@ -1,6 +1,6 @@
 var fs = require("fs");
 
-module.exports = function(RED) {
+module.exports = function (RED) {
 	"use strict";
 
 	function HttpAuthFileNode(config) {
@@ -39,7 +39,7 @@ module.exports = function(RED) {
 
 		this.authType = config.authType;
 		this.realm = config.realm;
-		this.getUser = function(_realm, _username) {
+		this.getUser = function (_realm, _username) {
 			var _realmL = _realm.trim().toLowerCase();
 			var _usernameL = _username.trim().toLowerCase();
 			if (_realmL == realmL && users[_usernameL]) {

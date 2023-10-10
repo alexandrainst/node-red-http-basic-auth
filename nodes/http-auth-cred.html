@@ -2,14 +2,14 @@
 	RED.nodes.registerType("node-red-contrib-httpauthcred", {
 		category: "config",
 		defaults: {
-			name: {value: ""},
-			authType: {value: "Basic", required: true},
-			realm: {value: "", required: true},
-			username: {value: "", required: true},
-			password: {value: "", required: true},
-			hashed: {value: false, required: true}
+			name: { value: "" },
+			authType: { value: "Basic", required: true },
+			realm: { value: "", required: true },
+			username: { value: "", required: true },
+			password: { value: "", required: true },
+			hashed: { value: false, required: true }
 		},
-		label: function() {return this.name.trim() || "[" + this.authType + "] " + this.realm.trim() + ":" + this.username.trim() + ":*****";}
+		label: function () { return this.name.trim() || "[" + this.authType + "] " + this.realm.trim() + ":" + this.username.trim() + ":*****"; }
 	});
 </script>
 

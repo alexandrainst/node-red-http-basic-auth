@@ -28,7 +28,7 @@ function digestAuth(authStr, node, msg) {
 		}
 	}
 
-	var auth = {method: method.toUpperCase()};
+	var auth = { method: method.toUpperCase() };
 
 	for (var index = 0; index < values.length; index++) {
 		var value = values[index].trim();
@@ -113,7 +113,7 @@ function unAuth(node, msg, stale) {
 			var session = digestSession(node.httpauthconf.realm);
 			sessions[session.nonce + session.opaque] = session;
 
-			res.set("WWW-Authenticate", 
+			res.set("WWW-Authenticate",
 				'Digest realm="' + session.realm + '"'
 				+ ', nonce="' + session.nonce + '"'
 				+ ', opaque="' + session.opaque + '"'
@@ -129,7 +129,7 @@ function unAuth(node, msg, stale) {
 	res.status(401).send("401 Unauthorized");
 }
 
-module.exports = function(RED) {
+module.exports = function (RED) {
 	"use strict";
 
 	function HttpAuthNode(config) {
@@ -143,7 +143,7 @@ module.exports = function(RED) {
 		var usernameL = username.toLowerCase();
 		var password = config.password;
 		var hashed = config.hashed;
-		var getUser = function(_realm, _username) {
+		var getUser = function (_realm, _username) {
 			if (_realm.trim().toLowerCase() == realmL && _username.trim().toLowerCase() == usernameL) {
 				return {
 					realm: realm,
@@ -201,7 +201,7 @@ module.exports = function(RED) {
 			}
 		});
 
-		this.on("close", function() {
+		this.on("close", function () {
 			// Called when the node is shutdown - eg on redeploy.
 			// Allows ports to be closed, connections dropped etc.
 			// eg: node.client.disconnect();
