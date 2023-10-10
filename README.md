@@ -12,8 +12,6 @@ Supports [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) to store passwords
 
 ## Config
 
-![flow.png](images/config.png)
-
 There are three type of configuration:
 
 1. *Simple*: each node has it’s own credentials. (one credential)
@@ -34,14 +32,6 @@ With *File* config type you must specify the following:
 - File: location of the file containing the credentials relative to the presently working directory.
 	The format for each line is `user:realm:password`.
 	The passwords may be in plain-text or hashed (only bcrypt is supported).
-
-### File Configuration
-
-![file.png](images/file.png)
-
-### Shared config
-
-![cred.png](images/cred.png)
 
 ## Credits
 
