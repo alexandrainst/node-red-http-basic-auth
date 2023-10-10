@@ -13,8 +13,8 @@ It is to be used in conjunction with an [HTTP Input node](https://cookbook.noder
 
 There are three type of configuration:
 
-1. *Not Shared*: each node has it's own credentials. (one credential)
-2. *Shared*: credentials shared which multiple nodes. (one credential)
+1. *Simple*: each node has it’s own credentials. (one credential)
+2. *Shared*: credentials shared with multiple nodes. (one credential)
 3. *File*: the user credentials are stored in a file. (multiple credentials)
 
 With all three config types you must specify the following:
@@ -22,7 +22,7 @@ With all three config types you must specify the following:
 - *Realm*: what realm will be used with this node
 - *Hashed*: are the passwords in the *Password* field or in the credentials file hashed.
 
-With *Shared* and *Not Shared* config types you must specify the following:
+With *Simple* and *Shared* config types you must specify the following:
 
 - *Username*: the username
 - *Password*: the password.

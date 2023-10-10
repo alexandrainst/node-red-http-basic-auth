@@ -26,10 +26,9 @@
 		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
 		<input type="text" id="node-input-name" />
 	</div>
-	<hr />
 
 	<fieldset>
-		<legend>Option 1: Simple (not shared)</legend>
+		<legend>Option 1: Simple</legend>
 		<div class="form-row">
 			<label for="node-input-realm"><i class="fa fa-globe"></i> Realm</label>
 			<input type="text" id="node-input-realm" />
@@ -47,7 +46,6 @@
 			<input type="checkbox" id="node-input-hashed" />
 		</div>
 	</fieldset>
-	<hr />
 
 	<fieldset>
 		<legend>Option 2: Shared</legend>
@@ -56,7 +54,6 @@
 			<input type="text" id="node-input-cred" />
 		</div>
 	</fieldset>
-	<hr />
 
 	<fieldset>
 		<legend>Option 3: File</legend>
@@ -85,9 +82,9 @@
 </p>
 <p>There are three type of configuration:</p>
 <ol>
+	<li><i>Simple</i>: each node has it’s own credentials. (one credential)</li>
+	<li><i>Shared</i>: credentials shared with multiple nodes. (one credential)</li>
 	<li><i>File</i>: the user credentials are stored in a file. (multiple credentials)</li>
-	<li><i>Shared</i>: credentials shared which multiple nodes. (one credential)</li>
-	<li><i>Not Shared</i>: each node has it's own credentials. (one credential)</li>
 </ol>
 
 <p>With all three config types you must specify the following:</p>
@@ -96,7 +93,7 @@
 	<li><i>Hashed</i>: are the passwords in the Password field or in the credentials file hashed.</li>
 </ul>
 
-<p>With <i>Shared</i> and <i>Not Shared</i> config types you must specify the following:</p>
+<p>With <i>Simple</i> and <i>Shared</i> config types you must specify the following:</p>
 <ul>
 	<li><i>Username</i>: the username</li>
 	<li>
