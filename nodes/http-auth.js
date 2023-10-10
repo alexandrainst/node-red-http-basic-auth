@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const sessions = {};
 
 function basicAuth(authStr, node, msg) {
-	const values = new Buffer(authStr, 'base64').toString().split(':');
+	const values = Buffer.from(authStr, 'base64').toString().split(':');
 	const username = values[0];
 	const password = values[1];
 	const user = node.httpauthconf.getUser(node.httpauthconf.realm, username);
@@ -88,8 +88,8 @@ function digestSession(realm) {
 	const timestamp = date.getTime();
 	const expires = timestamp + 10000; // 10 seconds from now
 	const random = Math.random(timestamp);
-	const nonce = new Buffer(timestamp + ':' + random).toString('base64');
-	const opaque = new Buffer(String(timestamp + random)).toString('base64');
+	const nonce = Buffer.from(timestamp + ':' + random).toString('base64');
+	const opaque = Buffer.from(String(timestamp + random)).toString('base64');
 	const qop = 'auth';
 	const algorithm = 'MD5-sess';
 
