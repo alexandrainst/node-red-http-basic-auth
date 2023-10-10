@@ -1,10 +1,19 @@
+let bcrypt;
+try {
+	// Faster native library, if available
+	bcrypt = require('bcrypt');
+} catch (e) {
+	// Pure JavaScript fallback
+	bcrypt = require('bcryptjs');
+}
+
 function basicAuth(authStr, node, msg) {
 	const values = Buffer.from(authStr, 'base64').toString().split(':');
 	const username = values[0];
 	const password = values[1];
 	const user = node.httpauthconf.getUser(node.httpauthconf.realm, username);
 
-	if (user && password == user.password) {
+	if (user !== null && (password === user.password || bcrypt.compareSync(password, user.password))) {
 		node.send(msg);
 	} else {
 		unAuth(node, msg);
@@ -30,14 +39,12 @@ module.exports = function (RED) {
 		let username = config.username.trim();
 		let usernameL = username.toLowerCase();
 		let password = config.password;
-		let hashed = config.hashed;
 		let getUser = function (_realm, _username) {
-			if (_realm.trim().toLowerCase() == realmL && _username.trim().toLowerCase() == usernameL) {
+			if (_realm.trim().toLowerCase() === realmL && _username.trim().toLowerCase() === usernameL) {
 				return {
 					realm,
 					username,
 					password,
-					hashed,
 				};
 			}
 			return null;
@@ -51,7 +58,6 @@ module.exports = function (RED) {
 			username = cred.username.trim();
 			usernameL = username.toLowerCase();
 			password = cred.password;
-			hashed = cred.hashed;
 		}
 
 		const file = RED.nodes.getNode(config.file);

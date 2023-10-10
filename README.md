@@ -5,6 +5,9 @@
 This Node-RED module performs [HTTP Basic authentication](https://developer.mozilla.org/docs/Web/HTTP/Authentication).
 It is to be used in conjunction with an [HTTP Input node](https://cookbook.nodered.org/http/create-an-http-endpoint).
 
+Supports [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) to store passwords
+(such as in the [Apache password format](https://httpd.apache.org/docs/current/misc/password_encryptions.html)).
+
 ![flow.png](images/flow.png)
 
 ## Config
@@ -19,19 +22,18 @@ There are three type of configuration:
 
 With all three config types you must specify the following:
 
-- *Realm*: what realm will be used with this node
-- *Hashed*: are the passwords in the *Password* field or in the credentials file hashed.
+- *Realm*: what authorization realm will be used with this node.
 
 With *Simple* and *Shared* config types you must specify the following:
 
 - *Username*: the username
-- *Password*: the password.
-	If you entered a hashed password you must check the *Hashed* checkbox.
+- *Password*: the password may be in plain-text or hashed (only bcrypt is supported).
 
 With *File* config type you must specify the following:
 
 - File: location of the file containing the credentials relative to the presently working directory.
-	If the password are hashed you must check the Hashed checkbox.
+	The format for each line is `user:realm:password`.
+	The passwords may be in plain-text or hashed (only bcrypt is supported).
 
 ### File Configuration
 

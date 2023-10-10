@@ -37,6 +37,12 @@
 			"node-red-http-basic-auth-file": "nodes/http-auth-file.js"
 		}
 	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3"
+	},
+	"optionalDependencies": {
+		"bcrypt": "^5.1.1"
+	},
 	"devDependencies": {
 		"eslint": "^8.51.0",
 		"eslint-config-standard": "^17.1.0",

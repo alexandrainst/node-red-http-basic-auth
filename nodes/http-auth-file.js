@@ -9,7 +9,6 @@ module.exports = function (RED) {
 		const realm = config.realm.trim();
 		const realmL = realm.toLowerCase();
 		const filePath = config.filePath.trim();
-		const hashed = config.hashed;
 		const users = {};
 
 		const stats = fs.statSync(filePath);
@@ -25,12 +24,11 @@ module.exports = function (RED) {
 				const _realmL = _realm.toLowerCase();
 				const _password = values[2];
 
-				if (_realmL == realmL) {
+				if (_realmL === realmL) {
 					users[_usernameL] = {
 						realm: _realm,
 						username: _username,
 						password: _password,
-						hashed,
 					};
 				}
 			}
@@ -40,12 +38,11 @@ module.exports = function (RED) {
 		this.getUser = function (_realm, _username) {
 			const _realmL = _realm.trim().toLowerCase();
 			const _usernameL = _username.trim().toLowerCase();
-			if (_realmL == realmL && users[_usernameL]) {
+			if (_realmL === realmL && users[_usernameL]) {
 				return {
 					realm: users[_usernameL].realm,
 					username: users[_usernameL].username,
 					password: users[_usernameL].password,
-					hashed: users[_usernameL].hashed,
 				};
 			}
 			return null;

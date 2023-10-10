@@ -7,7 +7,6 @@ module.exports = function (RED) {
 		this.realm = config.realm;
 		this.username = config.username;
 		this.password = config.password;
-		this.hashed = config.hashed;
 	}
 
 	RED.nodes.registerType('node-red-http-basic-auth-cred', HttpAuthCredNode);
