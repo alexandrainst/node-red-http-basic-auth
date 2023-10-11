@@ -8,7 +8,17 @@ It is to be used in conjunction with an [HTTP Input node](https://cookbook.noder
 Supports [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) to store passwords
 (such as in the [Apache password format](https://httpd.apache.org/docs/current/misc/password_encryptions.html)).
 
-![flow.png](images/flow.png)
+## Example
+
+Example of flow, with username `test` and password `test`: [`flow.json`](./examples/flow.json)
+
+[![flow.png](images/flow.png)](./examples/flow.json)
+
+Can be tested with e.g.:
+
+```sh
+curl 'https://test:test@nodered.example.net/basic-auth-demo'
+```
 
 ## Config
 
