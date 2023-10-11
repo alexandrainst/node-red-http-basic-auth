@@ -50,12 +50,15 @@
 		"eslint-plugin-html": "^7.1.0",
 		"eslint-plugin-import": "^2.28.1",
 		"eslint-plugin-n": "^16.1.0",
-		"eslint-plugin-promise": "^6.1.1"
+		"eslint-plugin-promise": "^6.1.1",
+		"node-red-contrib-mock-cli": "^1.2.4"
 	},
 	"scripts": {
+		"start": "node ./index.js",
 		"eslint": "eslint --ext .js,.html .",
 		"eslint_fix": "eslint --fix --ext .js,.html .",
 		"fix": "npm run eslint_fix",
-		"test": "npm run eslint"
+		"pretest": "npm run-script eslint",
+		"test": "./test.sh"
 	}
 }
