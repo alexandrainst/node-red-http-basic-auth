@@ -50,9 +50,9 @@ module.exports = function (RED) {
 		let src = 'inline';
 		let realm = config.realm.trim();
 		let realmL = realm.toLowerCase();
-		let username = config.username.trim();
-		let usernameL = username.toLowerCase();
-		let password = config.password;
+		const username = config.username.trim();
+		const usernameL = username.toLowerCase();
+		const password = config.password;
 		let getUser = function (_realm, _username) {
 			if (_realm.trim().toLowerCase() === realmL && _username.trim().toLowerCase() === usernameL) {
 				return {
@@ -64,14 +64,12 @@ module.exports = function (RED) {
 			return null;
 		};
 
-		const cred = RED.nodes.getNode(config.cred);
-		if (cred) {
-			src = 'cred';
-			realm = cred.realm.trim();
+		const multiple = RED.nodes.getNode(config.multiple);
+		if (multiple) {
+			src = 'multiple';
+			realm = multiple.realm.trim();
 			realmL = realm.toLowerCase();
-			username = cred.username.trim();
-			usernameL = username.toLowerCase();
-			password = cred.password;
+			getUser = multiple.getUser;
 		}
 
 		const file = RED.nodes.getNode(config.file);
@@ -80,14 +78,6 @@ module.exports = function (RED) {
 			realm = file.realm.trim();
 			realmL = realm.toLowerCase();
 			getUser = file.getUser;
-		}
-
-		const multiple = RED.nodes.getNode(config.multiple);
-		if (multiple) {
-			src = 'multiple';
-			realm = multiple.realm.trim();
-			realmL = realm.toLowerCase();
-			getUser = multiple.getUser;
 		}
 
 		this.httpauthconf = {};
