@@ -28,17 +28,19 @@ function basicAuth(authStr, node, msg) {
 	const user = node.httpauthconf.getUser(node.httpauthconf.realm, username);
 
 	if (user !== null && passwordCompare(password, user.password)) {
-		node.send(msg);
+		node.send([msg, null]);
 	} else {
 		unAuth(node, msg);
 	}
 }
 
-function unAuth(node, msg, stale) {
+function unAuth(node, msg) {
 	const res = msg.res._res || msg.res; // Resolves deprecates warning messages.
 	res.set('WWW-Authenticate', 'Basic realm="' + node.httpauthconf.realm + '"');
 	res.type('text/plain');
 	res.status(401).send('401 Unauthorized');
+
+	node.send([null, msg]);
 }
 
 module.exports = function (RED) {
