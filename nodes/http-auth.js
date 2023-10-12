@@ -105,8 +105,10 @@ module.exports = function (RED) {
 		const path = require('path');
 		RED.httpAdmin.get('/node-red-http-basic-auth/images/:file', function (req, res, next) {
 			const filename = req.params.file.replace(/[^a-zA-Z0-9._-]/g, '').replace(/^\.+/g, '');
-			fs.readFile(path.join(__dirname, '/../images/', filename), function (err, data) {
+			const imagePath = path.join(__dirname, '..', 'images', filename);
+			fs.readFile(imagePath, function (err, data) {
 				if (err) {
+					console.warn('Error reading image:', err);
 					res.status(404).end();
 				} else {
 					res.set('Content-Type', 'image/png');
