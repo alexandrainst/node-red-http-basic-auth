@@ -82,10 +82,9 @@ module.exports = function (RED) {
 			getUser = file.getUser;
 		}
 
-		var multiple = RED.nodes.getNode(config.multiple);
+		const multiple = RED.nodes.getNode(config.multiple);
 		if (multiple) {
-			src = "multiple";
-			authType = multiple.authType;
+			src = 'multiple';
 			realm = multiple.realm.trim();
 			realmL = realm.toLowerCase();
 			getUser = multiple.getUser;
