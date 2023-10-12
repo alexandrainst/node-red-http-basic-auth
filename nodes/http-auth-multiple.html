@@ -43,7 +43,7 @@
 		oneditsave: function () {
 			const auths = $('#node-input-auths-container').editableList('items');
 			const node = this;
-			node.auths = {};
+			node.auths = [];
 			auths.each(function (i) {
 				const auth = $(this);
 				const user = auth.find('.node-input-auth-user').val();
