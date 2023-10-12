@@ -108,7 +108,7 @@ module.exports = function (RED) {
 				dotfiles: 'deny',
 			};
 			const fileName = req.params.name;
-			res.sendFile(fileName, options, function (err) {
+			res.sendFile(fileName, options, (err) => {
 				if (err) {
 					next(err);
 				}
