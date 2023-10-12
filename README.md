@@ -1,44 +1,78 @@
-# node-red-contrib-httpauth
-Node-RED node for HTTP Basic/Digest Auth
+# @alexandrainst/node-red-http-basic-auth
 
-This Node-RED module performs Basic and Digest authentication.
-It is to be used in conjunction with an http input node.
+[Node-RED](https://nodered.org/) node for HTTP Basic Auth.
 
-![flow.png](images/flow.png)
+This Node-RED module performs [HTTP Basic authentication](https://developer.mozilla.org/docs/Web/HTTP/Authentication).
+It is to be used in conjunction with an [HTTP Input node](https://cookbook.nodered.org/http/create-an-http-endpoint).
 
-## Config ##
+Supports [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) to store passwords
+(such as in the [Apache password format](https://httpd.apache.org/docs/current/misc/password_encryptions.html)).
 
-![flow.png](images/config.png)
+## Example
+
+Example of flow, with username `test` and password `test`: [`flow.json`](./examples/flow.json)
+
+[![flow.png](images/flow.png)](./examples/flow.json)
+
+Can be tested with e.g.:
+
+```sh
+curl 'https://test:test@nodered.example.net/basic-auth-demo'
+```
+
+## Config
 
 There are three type of configuration:
 
- 1. File: the user credentials are stored in a file. (mutliple credentials)
- 2. Shared: credentials shared which multiple nodes. (one credential)
- 3. Not Shared: each node has it's own credentials. (one credential)
+1. *Simple*: each node has it’s own credentials. (one credential)
+2. *Shared*: credentials shared with multiple nodes. (one credential)
+3. *File*: the user credentials are stored in a file. (multiple credentials)
 
 With all three config types you must specify the following:
 
- - Auth Type: what authentication type will be used: Basic, Digest
- - Realm: what realm will be used with this node
- - Hashed: are the passwords in the Password field or in the credentials file hashed.
-   This field is only relavent if Auth Type is Digest. It has no effect on Basic.
-   Hash format: MD5(Username:Realm:Password)
+- *Realm*: what authorization realm will be used with this node.
 
-With Shared and Not Shared config types you must specify the following:
+With *Simple* and *Shared* config types you must specify the following:
 
- - Username: the username
- - Password: the password
-   If you entered a hashed password you must check the Hashed checkbox.
+- *Username*: the username
+- *Password*: the password may be in plain-text or hashed (only bcrypt is supported).
+	Example of hashed password `test`:
 
-With File config type you must specify the following:
+```plain
+$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
+```
 
- - File: location of the file containing the credentials relative to the presently working directory
-   If the password are hashed you must check the Hashed checkbox.
+With *File* config type you must specify the following:
 
-### File Configuration ###
+- File: location of the file containing the credentials relative to the presently working directory.
+	The format for each line is `user:realm:password`.
+	The passwords may be in plain-text or hashed (only bcrypt is supported).
+	Example of file:
 
-![file.png](images/file.png)
+```plain
+user1:application1:test
+user2:application1:$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
+```
 
-### Shared config ###
+## Hints
 
-![cred.png](images/cred.png)
+Here are examples to create hashed passwords:
+
+### In Linux Debian / Ubuntu command line
+
+```sh
+sudo apt install apache2-utils
+htpasswd -nbB -C 10 '' 'my-password' | cut -d: -f2
+```
+
+### With Node.js
+
+```sh
+npm install bcryptjs
+node -e "console.log(require('bcryptjs').hashSync('my-password', 10));"
+```
+
+## Credits
+
+Forked from [endemecio02/node-red-contrib-httpauth](https://github.com/endemecio02/node-red-contrib-httpauth) (abandoned)
+by [Alexandre Alapetite](https://github.com/Alkarex) for the [Alexandra Institute](https://alexandra.dk/), October 2023.

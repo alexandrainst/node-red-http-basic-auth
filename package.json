@@ -1,74 +1,64 @@
 {
-  "_from": "git+https://github.com/pjalbuquerque/node-red-contrib-httpauth.git",
-  "_id": "node-red-contrib-httpauth@1.0.12",
-  "_inBundle": false,
-  "_location": "/node-red-contrib-httpauth",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "git",
-    "raw": "https://github.com/pjalbuquerque/node-red-contrib-httpauth.git",
-    "rawSpec": "https://github.com/pjalbuquerque/node-red-contrib-httpauth.git",
-    "saveSpec": "git+https://github.com/pjalbuquerque/node-red-contrib-httpauth.git",
-    "fetchSpec": "https://github.com/pjalbuquerque/node-red-contrib-httpauth.git",
-    "gitCommittish": null
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "git+https://github.com/pjalbuquerque/node-red-contrib-httpauth.git#64cec192cb907141387abdc6855c1a7c7ddcca5e",
-  "_spec": "https://github.com/pjalbuquerque/node-red-contrib-httpauth.git",
-  "_where": "/Users/Paulo/.node-red",
-  "author": {
-    "name": "Endemecio Santana"
-  },
-  "bugs": {
-    "url": "https://github.com/endemecio02/node-red-contrib-httpauth/issues"
-  },
-  "bundleDependencies": false,
-  "dependencies": {},
-  "deprecated": false,
-  "description": "Node which implements HTTP Basic/Digest Authorization.",
-  "engines": {
-    "node": "^0.12.7"
-  },
-  "homepage": "https://github.com/endemecio02/node-red-contrib-httpauth#readme",
-  "keywords": [
-    "node-red",
-    "http",
-    "authorization",
-    "basic",
-    "digest"
-  ],
-  "license": "GPL-2.0",
-  "name": "node-red-contrib-httpauth",
-  "node-red": {
-    "nodes": {
-      "node-red-contrib-httpauth": "nodes/http-auth.js",
-      "node-red-contrib-httpauthcred": "nodes/http-auth-cred.js",
-      "node-red-contrib-httpauthfile": "nodes/http-auth-file.js",
-      "node-red-contrib-httpauthmultiple": "nodes/http-auth-multiple.js"
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/endemecio02/node-red-contrib-httpauth.git"
-  },
-  "version": "1.0.12",
-  "warnings": [
-    {
-      "code": "ENOTSUP",
-      "required": {
-        "node": "^0.12.7"
-      },
-      "pkgid": "node-red-contrib-httpauth@1.0.12"
-    },
-    {
-      "code": "ENOTSUP",
-      "required": {
-        "node": "^0.12.7"
-      },
-      "pkgid": "node-red-contrib-httpauth@1.0.12"
-    }
-  ]
+	"name": "@alexandrainst/node-red-http-basic-auth",
+	"version": "2.3.0",
+	"description": "Node-RED node for HTTP Basic Authorization",
+	"keywords": [
+		"node-red",
+		"node-red-contrib",
+		"http",
+		"basic",
+		"auth",
+		"authorization",
+		"rfc2617",
+		"rfc7617"
+	],
+	"author": {
+		"name": "Alexandre Alapetite",
+		"url": "https://github.com/Alkarex"
+	},
+	"contributors": [
+		{
+			"name": "Endemecio Santana",
+			"url": "https://github.com/endemecio02"
+		}
+	],
+	"license": "GPL-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/alexandrainst/node-red-http-basic-auth.git"
+	},
+	"engines": {
+		"node": ">=12"
+	},
+	"node-red": {
+		"version": ">=2.0.0",
+		"nodes": {
+			"http-basic-auth": "nodes/http-auth.js",
+			"http-basic-auth-cred": "nodes/http-auth-cred.js",
+			"http-basic-auth-file": "nodes/http-auth-file.js"
+		}
+	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3"
+	},
+	"optionalDependencies": {
+		"bcrypt": "^5.1.1"
+	},
+	"devDependencies": {
+		"eslint": "^8.51.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-html": "^7.1.0",
+		"eslint-plugin-import": "^2.28.1",
+		"eslint-plugin-n": "^16.1.0",
+		"eslint-plugin-promise": "^6.1.1",
+		"node-red-contrib-mock-cli": "^1.3.1"
+	},
+	"scripts": {
+		"start": "node ./index.js",
+		"eslint": "eslint --ext .js,.html .",
+		"eslint_fix": "eslint --fix --ext .js,.html .",
+		"fix": "npm run eslint_fix",
+		"pretest": "npm run-script eslint",
+		"test": "./test.sh"
+	}
 }

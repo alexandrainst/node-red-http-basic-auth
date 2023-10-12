@@ -1,39 +1,29 @@
 <script type="text/javascript">
-	RED.nodes.registerType("node-red-contrib-httpauthfile", {
-		category: "config",
+	/* global RED:false */
+	RED.nodes.registerType('http-basic-auth-file', {
+		category: 'config',
 		defaults: {
-			name: {value: ""},
-			authType: {value: "Basic", required: true},
-			realm: {value: "", required: true},
-			filePath: {value: "", required: true},
-			hashed: {value: false, required: true}
+			name: { value: '' },
+			realm: { value: '', required: true },
+			filePath: { value: '', required: true },
 		},
-		label: function() {return this.name.trim() || "[" + this.authType + "] " + this.realm.trim() + ":" + this.filePath.trim();}
+		label: function () {
+			return this.name.trim() || this.realm.trim() + ':' + this.filePath.trim();
+		},
 	});
 </script>
 
-<script type="text/x-red" data-template-name="node-red-contrib-httpauthfile">
+<script type="text/x-red" data-template-name="http-basic-auth-file">
 	<div class="form-row">
 		<label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
-		<input type="texth" id="node-config-input-name">
-	</div>
-	<div class="form-row">
-		<label for="node-config-input-authType"><i class="fa fa-list"></i> Auth Type</label>
-		<select id="node-config-input-authType">
-			<option value="Basic">Basic</option>
-			<option value="Digest">Digest</option>
-		</select>
+		<input type="texth" id="node-config-input-name" />
 	</div>
 	<div class="form-row">
 		<label for="node-config-input-realm"><i class="fa fa-globe"></i> Realm</label>
-		<input type="text" id="node-config-input-realm">
+		<input type="text" id="node-config-input-realm" />
 	</div>
 	<div class="form-row">
 		<label for="node-config-input-filePath"><i class="fa fa-file"></i> File</label>
-		<input type="text" id="node-config-input-filePath">
-	</div>
-	<div class="form-row">
-		<label for="node-config-input-hashed"><i class="fa fa-asterisk"></i> Hashed</label>
-		<input type="checkbox" id="node-config-input-hashed">
+		<input type="text" id="node-config-input-filePath" />
 	</div>
 </script>

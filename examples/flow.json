@@ -1,0 +1,67 @@
+[
+	{
+		"id": "f51d5aecb225f818",
+		"type": "http-basic-auth",
+		"z": "d9a661f4.ef966",
+		"name": "",
+		"file": "",
+		"cred": "",
+		"realm": "node-red",
+		"username": "test",
+		"password": "$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6",
+		"x": 1040,
+		"y": 100,
+		"wires": [
+			[
+				"6ef8ccf5965075f1"
+			]
+		]
+	},
+	{
+		"id": "449f0a654d24daf3",
+		"type": "http in",
+		"z": "d9a661f4.ef966",
+		"name": "",
+		"url": "/basic-auth-demo",
+		"method": "get",
+		"upload": false,
+		"swaggerDoc": "",
+		"x": 810,
+		"y": 100,
+		"wires": [
+			[
+				"f51d5aecb225f818"
+			]
+		]
+	},
+	{
+		"id": "57b04097f0b0647d",
+		"type": "http response",
+		"z": "d9a661f4.ef966",
+		"name": "",
+		"statusCode": "",
+		"headers": {},
+		"x": 1370,
+		"y": 100,
+		"wires": []
+	},
+	{
+		"id": "6ef8ccf5965075f1",
+		"type": "template",
+		"z": "d9a661f4.ef966",
+		"name": "",
+		"field": "payload",
+		"fieldType": "msg",
+		"format": "html",
+		"syntax": "plain",
+		"template": "<p>\nHello world!\n</p>\n",
+		"output": "str",
+		"x": 1220,
+		"y": 100,
+		"wires": [
+			[
+				"57b04097f0b0647d"
+			]
+		]
+	}
+]
