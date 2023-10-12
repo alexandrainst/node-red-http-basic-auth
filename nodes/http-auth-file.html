@@ -4,11 +4,10 @@
 		category: 'config',
 		defaults: {
 			name: { value: '' },
-			realm: { value: '', required: true },
 			filePath: { value: '', required: true },
 		},
 		label: function () {
-			return this.name.trim() || this.realm.trim() + ':' + this.filePath.trim();
+			return this.name.trim() || this.filePath.trim();
 		},
 	});
 </script>
@@ -17,10 +16,6 @@
 	<div class="form-row">
 		<label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
 		<input type="texth" id="node-config-input-name" />
-	</div>
-	<div class="form-row">
-		<label for="node-config-input-realm"><i class="fa fa-globe"></i> Realm</label>
-		<input type="text" id="node-config-input-realm" />
 	</div>
 	<div class="form-row">
 		<label for="node-config-input-filePath"><i class="fa fa-file"></i> File</label>

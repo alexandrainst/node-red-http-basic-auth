@@ -30,13 +30,13 @@ There are three types of configuration:
 
 ## Definitions
 
-* *Username*
-	* The username
-	* Example: `alice`
-
 * *Realm*
 	* Authorization realm for which the credentials will be valid
 	* Example: `node-red`
+
+* *Username*
+	* The username
+	* Example: `alice`
 
 * *Password*
 	* The password may be in plain-text or hashed (only bcrypt is supported)
@@ -45,16 +45,16 @@ There are three types of configuration:
 
 * *File*
 	* Location of the file containing the credentials relative to the presently working directory
-	* Example: `/data/.credentials`
-	* The format for each line is `user:realm:password`
+	* Example: `/data/.htpasswd`
+	* The format for each line is `username:password`
 
 </dl>
 
-Example of file:
+Example of file: (see also [Apache `htpasswd`](https://httpd.apache.org/docs/current/programs/htpasswd.html))
 
 ```plain
-user1:node-red:test
-user2:node-red:$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
+user1:test
+user2:$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
 ```
 
 ## Hints
