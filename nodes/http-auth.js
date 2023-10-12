@@ -25,7 +25,7 @@ function basicAuth(authStr, node, msg) {
 	const values = Buffer.from(authStr, 'base64').toString().split(':');
 	const username = values[0];
 	const password = values[1];
-	const user = node.httpauthconf.getUser(node.httpauthconf.realm, username);
+	const user = node.httpauthconf.getUser(username);
 
 	if (user !== null && passwordCompare(password, user.password)) {
 		node.send(msg);
@@ -48,15 +48,12 @@ module.exports = function (RED) {
 		RED.nodes.createNode(this, config);
 
 		let src = 'inline';
-		let realm = config.realm.trim();
-		let realmL = realm.toLowerCase();
 		const username = config.username.trim();
 		const usernameL = username.toLowerCase();
 		const password = config.password;
-		let getUser = function (_realm, _username) {
-			if (_realm.trim().toLowerCase() === realmL && _username.trim().toLowerCase() === usernameL) {
+		let getUser = function (_username) {
+			if (_username.trim().toLowerCase() === usernameL) {
 				return {
-					realm,
 					username,
 					password,
 				};
@@ -67,22 +64,17 @@ module.exports = function (RED) {
 		const multiple = RED.nodes.getNode(config.multiple);
 		if (multiple) {
 			src = 'multiple';
-			realm = multiple.realm.trim();
-			realmL = realm.toLowerCase();
 			getUser = multiple.getUser;
 		}
 
 		const file = RED.nodes.getNode(config.file);
 		if (file) {
 			src = 'file';
-			realm = file.realm.trim();
-			realmL = realm.toLowerCase();
 			getUser = file.getUser;
 		}
 
 		this.httpauthconf = {};
 		this.httpauthconf.src = src;
-		this.httpauthconf.realm = realm;
 		this.httpauthconf.getUser = getUser;
 
 		const node = this;

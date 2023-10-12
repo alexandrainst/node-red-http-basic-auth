@@ -4,7 +4,6 @@
 		category: 'config',
 		defaults: {
 			name: { value: '' },
-			realm: { value: '', required: true },
 			auths: { value: {} },
 		},
 		color: '#E7E7AE',
@@ -23,14 +22,10 @@
 						const propertyUser = $('<input/>',
 							{ class: 'node-input-auth-user', type: 'text', style: 'width: 30%;', placeholder: 'user' }).appendTo(row);
 
-						const propertyRealm = $('<input/>',
-							{ class: 'node-input-auth-realm', type: 'text', style: 'margin-left: 3%; width: 30%;', placeholder: 'realm' }).appendTo(row);
-
 						const propertyPassword = $('<input/>',
 							{ class: 'node-input-auth-password', type: 'text', style: 'margin-left: 3%; width: 30%;', placeholder: 'password' }).appendTo(row);
 
 						propertyUser.val(auth.user);
-						propertyRealm.val(auth.realm);
 						propertyPassword.val(auth.password);
 
 						resizeRule(container);
@@ -40,13 +35,9 @@
 				});
 
 			if (this.auths) {
-				for (const key in this.auths) {
-					if ((this.auths[key]).length) {
-						this.auths[key].forEach(function (value, index) {
-							authList.editableList('addItem', { realm: key, user: value.user, password: value.password });
-						});
-					}
-				}
+				this.auths.forEach((value, index) => {
+					authList.editableList('addItem', { user: value.user, password: value.password });
+				});
 			}
 		},
 		oneditsave: function () {
@@ -56,15 +47,10 @@
 			auths.each(function (i) {
 				const auth = $(this);
 				const user = auth.find('.node-input-auth-user').val();
-				const realm = auth.find('.node-input-auth-realm').val();
 				const password = auth.find('.node-input-auth-password').val();
 
-				if (!node.auths[realm]) {
-					node.auths[realm] = [];
-				}
-
-				if (realm && user && password) {
-					node.auths[realm].push({
+				if (user && password) {
+					node.auths.push({
 						user,
 						password,
 					});
@@ -78,10 +64,6 @@
 	<div class="form-row">
 		<label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
 		<input type="texth" id="node-config-input-name">
-	</div>
-	<div class="form-row">
-		<label for="node-config-input-realm"><i class="fa fa-globe"></i> Realm</label>
-		<input type="text" id="node-config-input-realm">
 	</div>
 	<div class="form-row">
 		<label><i class="fa fa-list"></i> Auths</span>
