@@ -101,4 +101,20 @@ module.exports = function (RED) {
 	}
 
 	RED.nodes.registerType('http-basic-auth', HttpAuthNode);
+
+	if (RED.httpAdmin) {
+		const path = require('path');
+		RED.httpAdmin.get('/node-red-http-basic-auth/images/:name', (req, res, next) => {
+			const options = {
+				root: path.join(__dirname, '..', 'images'),
+				dotfiles: 'deny',
+			};
+			const fileName = req.params.name;
+			res.sendFile(fileName, options, (err) => {
+				if (err) {
+					next(err);
+				}
+			});
+		});
+	}
 };
