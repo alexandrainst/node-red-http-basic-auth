@@ -1,6 +1,6 @@
 {
 	"name": "@alexandrainst/node-red-http-basic-auth",
-	"version": "2.3.0",
+	"version": "3.0.0",
 	"description": "Node-RED node for HTTP Basic Authorization",
 	"keywords": [
 		"node-red",
@@ -20,6 +20,10 @@
 		{
 			"name": "Endemecio Santana",
 			"url": "https://github.com/endemecio02"
+		},
+		{
+			"name": "Paulo Albuquerque",
+			"url": "https://github.com/pjalbuquerque"
 		}
 	],
 	"license": "GPL-2.0",
@@ -34,8 +38,8 @@
 		"version": ">=2.0.0",
 		"nodes": {
 			"http-basic-auth": "nodes/http-auth.js",
-			"http-basic-auth-cred": "nodes/http-auth-cred.js",
-			"http-basic-auth-file": "nodes/http-auth-file.js"
+			"http-basic-auth-file": "nodes/http-auth-file.js",
+			"http-basic-auth-multiple": "nodes/http-auth-multiple.js"
 		}
 	},
 	"dependencies": {

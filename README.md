@@ -22,36 +22,39 @@ curl 'https://test:test@nodered.example.net/basic-auth-demo'
 
 ## Config
 
-There are three type of configuration:
+There are three types of configuration:
 
 1. *Simple*: each node has it’s own credentials. (one credential)
-2. *Shared*: credentials shared with multiple nodes. (one credential)
-3. *File*: the user credentials are stored in a file. (multiple credentials)
+2. *Multiple credentials*: credentials shared with multiple nodes. (multiple credentials)
+3. *File with multiple credentials*: the user credentials are stored in a file. (multiple credentials)
 
-With all three config types you must specify the following:
+## Definitions
 
-- *Realm*: what authorization realm will be used with this node.
+* *Username*
+	* The username
+	* Example: `alice`
 
-With *Simple* and *Shared* config types you must specify the following:
+* *Realm*
+	* Authorization realm for which the credentials will be valid
+	* Example: `node-red`
 
-- *Username*: the username
-- *Password*: the password may be in plain-text or hashed (only bcrypt is supported).
-	Example of hashed password `test`:
+* *Password*
+	* The password may be in plain-text or hashed (only bcrypt is supported)
+	* Example in plain-text: `test`
+	* Example in bcrypt: `$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6`
+
+* *File*
+	* Location of the file containing the credentials relative to the presently working directory
+	* Example: `/data/.credentials`
+	* The format for each line is `user:realm:password`
+
+</dl>
+
+Example of file:
 
 ```plain
-$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
-```
-
-With *File* config type you must specify the following:
-
-- File: location of the file containing the credentials relative to the presently working directory.
-	The format for each line is `user:realm:password`.
-	The passwords may be in plain-text or hashed (only bcrypt is supported).
-	Example of file:
-
-```plain
-user1:application1:test
-user2:application1:$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
+user1:node-red:test
+user2:node-red:$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
 ```
 
 ## Hints
