@@ -101,23 +101,16 @@ module.exports = function (RED) {
 	RED.nodes.registerType('http-basic-auth', HttpAuthNode);
 
 	if (RED.httpAdmin) {
-		const fs = require('fs');
 		const path = require('path');
-		RED.httpAdmin.get('/node-red-http-basic-auth/images/:file', function (req, res, next) {
-			const filename = req.params.file.replace(/[^a-zA-Z0-9._-]/g, '').replace(/^\.+/g, '');
-			const imagePath = path.join(__dirname, '..', 'images', filename);
-			fs.readFile(imagePath, function (err, data) {
+		RED.httpAdmin.get('/node-red-http-basic-auth/images/:name', (req, res, next) => {
+			const options = {
+				root: path.join(__dirname, '..', 'images'),
+				dotfiles: 'deny',
+			};
+			const fileName = req.params.name;
+			res.sendFile(fileName, options, function (err) {
 				if (err) {
-					console.warn('Error reading image:', err);
-					res.status(404).end();
-				} else {
-					res.set('Content-Type', 'image/png');
-					res.send(data, function (err) {
-						if (err) {
-							console.warn('Error serving image:', err);
-							res.status(500).end();
-						}
-					});
+					next(err);
 				}
 			});
 		});
