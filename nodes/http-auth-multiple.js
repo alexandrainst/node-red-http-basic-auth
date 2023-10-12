@@ -5,18 +5,16 @@ module.exports = function (RED) {
 		RED.nodes.createNode(this, config);
 
 		const users = {};
-		for (const key in config.auths) {
-			config.auths[key].forEach(function (value, index) {
-				const _username = value.user.trim();
-				const _usernameL = _username.toLowerCase();
-				const _password = value.password;
+		config.auths.forEach(function (value, index) {
+			const _username = value.user.trim();
+			const _usernameL = _username.toLowerCase();
+			const _password = value.password;
 
-				users[_usernameL] = {
-					username: _username,
-					password: _password,
-				};
-			});
-		}
+			users[_usernameL] = {
+				username: _username,
+				password: _password,
+			};
+		});
 
 		this.getUser = function (_username) {
 			const _usernameL = _username.trim().toLowerCase();
