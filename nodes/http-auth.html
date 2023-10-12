@@ -8,13 +8,13 @@
 			name: { value: '' },
 			file: { value: '', type: 'http-basic-auth-file', required: false },
 			multiple: { value: '', type: 'http-basic-auth-multiple', required: false },
-			realm: { value: '' },
+			realm: { value: '', required: true },
 			username: { value: '' },
 			password: { value: '' },
 		},
 		color: '#E7E7AE',
 		icon: 'white-globe.png',
-		label: function () { return this.name.trim() || 'http basic auth'; },
+		label: function () { return this.name.trim() || 'http basic auth: ' + this.realm; },
 		labelStyle: function () { return this.name.trim() ? 'node_label_italic' : ''; },
 		paletteLabel: 'http basic auth',
 	});
@@ -25,16 +25,16 @@
 		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
 		<input type="text" id="node-input-name" />
 	</div>
+	<div class="form-row">
+		<label for="node-input-realm"><i class="fa fa-globe"></i> Realm</label>
+		<input type="text" id="node-input-realm" />
+	</div>
 	<p>
 		ℹ️ In the options below, passwords may be given as plain-text or hashed using bcrypt.
 	</p>
 
 	<fieldset>
 		<legend>Option 1: Simple</legend>
-		<div class="form-row">
-			<label for="node-input-realm"><i class="fa fa-globe"></i> Realm</label>
-			<input type="text" id="node-input-realm" />
-		</div>
 		<div class="form-row">
 			<label for="node-input-username"><i class="fa fa-user"></i> Username</label>
 			<input type="text" id="node-input-username" />
@@ -89,7 +89,7 @@
 	<dd>Example: <kbd>alice</kbd>
 
 	<dt>Realm</dt>
-	<dd>Authorization realm for which the credentials will be valid</dd>
+	<dd>Authorization realm displayed to the user</dd>
 	<dd>Example: <kbd>node-red</kbd></dd>
 
 	<dt>Password</dt>
@@ -100,6 +100,6 @@
 	<dt>File</dt>
 	<dd>Location of the file containing the credentials relative to the presently working directory</dd>
 	<dd>Example: <kbd>/data/.credentials</kbd></dd>
-	<dd>The format for each line is <kbd>user:realm:password</kbd></dd>
+	<dd>The format for each line is <kbd>user:password</kbd></dd>
 </dl>
 </script>
