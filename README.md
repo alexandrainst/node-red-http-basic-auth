@@ -82,7 +82,7 @@ The second node output is used when the authentication failed, and it contains e
 }
 ```
 
-Both outputs contain the `req` object, which can be inspected for detailed information about HTTP request headers, IP address, etc.
+Both outputs contain the `req` object, which can be inspected for detailed information about HTTP request headers, IP address, URL, etc.
 
 ## Hints
 
