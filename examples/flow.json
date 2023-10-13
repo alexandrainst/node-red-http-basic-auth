@@ -5,15 +5,18 @@
 		"z": "d9a661f4.ef966",
 		"name": "",
 		"file": "",
-		"cred": "",
+		"multiple": "",
 		"realm": "node-red",
 		"username": "test",
 		"password": "$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6",
-		"x": 1040,
+		"x": 1030,
 		"y": 100,
 		"wires": [
 			[
 				"6ef8ccf5965075f1"
+			],
+			[
+				"a230b772edd4ea9c"
 			]
 		]
 	},
@@ -26,7 +29,7 @@
 		"method": "get",
 		"upload": false,
 		"swaggerDoc": "",
-		"x": 810,
+		"x": 790,
 		"y": 100,
 		"wires": [
 			[
@@ -42,7 +45,7 @@
 		"statusCode": "",
 		"headers": {},
 		"x": 1370,
-		"y": 100,
+		"y": 80,
 		"wires": []
 	},
 	{
@@ -56,12 +59,29 @@
 		"syntax": "plain",
 		"template": "<p>\nHello world!\n</p>\n",
 		"output": "str",
-		"x": 1220,
-		"y": 100,
+		"x": 1240,
+		"y": 80,
 		"wires": [
 			[
 				"57b04097f0b0647d"
 			]
 		]
+	},
+	{
+		"id": "a230b772edd4ea9c",
+		"type": "debug",
+		"z": "d9a661f4.ef966",
+		"name": "Log error",
+		"active": true,
+		"tosidebar": true,
+		"console": false,
+		"tostatus": false,
+		"complete": "true",
+		"targetType": "full",
+		"statusVal": "",
+		"statusType": "auto",
+		"x": 1240,
+		"y": 120,
+		"wires": []
 	}
 ]

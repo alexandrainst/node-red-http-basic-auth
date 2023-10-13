@@ -25,20 +25,36 @@ function basicAuth(authStr, node, msg) {
 	const values = Buffer.from(authStr, 'base64').toString().split(':');
 	const username = values[0];
 	const password = values[1];
+
+	if (username == '' || username == '') {
+		msg.authError = 'Invalid format for credentials!';
+		unAuth(node, msg);
+		return;
+	}
+
 	const user = node.httpauthconf.getUser(username);
 
-	if (user !== null && passwordCompare(password, user.password)) {
-		node.send(msg);
-	} else {
+	if (user === null) {
+		msg.authError = `Unknown user '${username}'!`;
 		unAuth(node, msg);
+		return;
 	}
+
+	if (!passwordCompare(password, user.password)) {
+		msg.authError = `Invalid credentials for user '${username}'!`;
+		unAuth(node, msg);
+		return;
+	}
+
+	msg.username = user.username;
+	node.send([msg, null]);
 }
 
-function unAuth(node, msg, stale) {
+function unAuth(node, msg) {
 	const res = msg.res._res || msg.res; // Resolves deprecates warning messages.
 	res.set('WWW-Authenticate', 'Basic realm="' + node.httpauthconf.realm + '"');
-	res.type('text/plain');
-	res.status(401).send('401 Unauthorized');
+	res.sendStatus(401);
+	node.send([null, msg]);
 }
 
 module.exports = function (RED) {
@@ -76,10 +92,14 @@ module.exports = function (RED) {
 		this.httpauthconf = {};
 		this.httpauthconf.src = src;
 		this.httpauthconf.getUser = getUser;
+		this.httpauthconf.realm = config.realm;
 
 		const node = this;
 
 		this.on('input', function (msg) {
+			msg.realm = node.httpauthconf.realm;
+			msg.username = '';
+
 			const header = msg.req.get('Authorization');
 			const authType = header ? header.match(/^\w+\b/)[0] : null;
 
@@ -87,6 +107,7 @@ module.exports = function (RED) {
 				const authStr = header.substring(authType.length).trim();
 				basicAuth(authStr, node, msg);
 			} else {
+				msg.authError = 'Missing Basic Auth headers!';
 				unAuth(node, msg);
 			}
 		});
