@@ -63,6 +63,7 @@ The first node output is used when the authentication succeeded, and it contains
 
 ```json
 "msg": {
+	"realm": "node-red",
 	"username": "alice",
 	"req": "...",
 	"res": "...",
@@ -74,6 +75,7 @@ The second node output is used when the authentication failed, and it contains e
 
 ```json
 "msg": {
+	"realm": "node-red",
 	"username": "",
 	"authError": "Unknown user 'test'",
 	"req": "...",
