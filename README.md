@@ -24,7 +24,7 @@ curl 'https://test:test@nodered.example.net/basic-auth-demo'
 
 There are three types of configuration:
 
-1. *Simple*: each node has it’s own credentials. (one credential)
+1. *Simple*: each node has its own credentials. (one credential)
 2. *Multiple credentials*: credentials shared with multiple nodes. (multiple credentials)
 3. *File with multiple credentials*: the user credentials are stored in a file. (multiple credentials)
 
@@ -56,6 +56,33 @@ Example of file: (see also [Apache `htpasswd`](https://httpd.apache.org/docs/cur
 user1:test
 user2:$2y$10$5TSZDldoJ7MxDZdtK/SG2O3cwORqLDhHabYlKX9OsM.W/Z/oLwKW6
 ```
+
+## Outputs
+
+The first node output is used when the authentication succeeded, and it contains the username:
+
+```json
+"msg": {
+	"username": "alice",
+	"req": "...",
+	"res": "...",
+	"...": "..."
+}
+```
+
+The second node output is used when the authentication failed, and it contains error information:
+
+```json
+"msg": {
+	"username": "",
+	"authError": "Unknown user 'test'",
+	"req": "...",
+	"res": "...",
+	"...": "..."
+}
+```
+
+Both outputs contain the `req` object, which can be inspected for detailed information about HTTP request headers, IP address, etc.
 
 ## Hints
 
