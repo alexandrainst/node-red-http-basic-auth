@@ -24,6 +24,7 @@ function passwordCompare(plain, hash) {
 function basicAuth(authStr, node, msg) {
 	const values = Buffer.from(authStr, 'base64').toString().split(':');
 	const username = values[0];
+	msg.username = username;
 	const password = values[1];
 	const user = node.httpauthconf.getUser(username);
 
@@ -37,9 +38,9 @@ function basicAuth(authStr, node, msg) {
 function unAuth(node, msg) {
 	const res = msg.res._res || msg.res; // Resolves deprecates warning messages.
 	res.set('WWW-Authenticate', 'Basic realm="' + node.httpauthconf.realm + '"');
-	res.type('text/plain');
-	res.status(401).send('401 Unauthorized');
+	res.sendStatus(401);
 
+	msg.payload = '401 Unauthorized';
 	node.send([null, msg]);
 }
 
@@ -89,6 +90,7 @@ module.exports = function (RED) {
 				const authStr = header.substring(authType.length).trim();
 				basicAuth(authStr, node, msg);
 			} else {
+				msg.username = '';
 				unAuth(node, msg);
 			}
 		});
