@@ -92,6 +92,7 @@ module.exports = function (RED) {
 		this.httpauthconf = {};
 		this.httpauthconf.src = src;
 		this.httpauthconf.getUser = getUser;
+		this.httpauthconf.realm = config.realm;
 
 		const node = this;
 
