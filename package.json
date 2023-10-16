@@ -1,6 +1,6 @@
 {
 	"name": "@alexandrainst/node-red-http-basic-auth",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"description": "Node-RED node for HTTP Basic Authorization",
 	"keywords": [
 		"node-red",
@@ -9,6 +9,9 @@
 		"basic",
 		"auth",
 		"authorization",
+		"access",
+		"htpasswd",
+		"password",
 		"rfc2617",
 		"rfc7617"
 	],

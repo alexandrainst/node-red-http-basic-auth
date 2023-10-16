@@ -7,6 +7,12 @@ try {
 	bcrypt = require('bcryptjs');
 }
 
+/**
+ * Cache in local memory the bcrypt decryption (which is very slow by design).
+ * Reset when the flow is redeployed or restarted.
+ */
+const bcryptCache = {};
+
 function passwordCompare(plain, hash) {
 	if (plain == '' || hash == '') {
 		return false;
@@ -18,7 +24,17 @@ function passwordCompare(plain, hash) {
 	// Compatibility work-around for 'bcrypt' library
 	hash = hash.replace(/^\$2[x|y]\$/, '$2b$');
 
-	return bcrypt.compareSync(plain, hash);
+	if (plain === bcryptCache[hash]) {
+		return true;
+	}
+
+	const success = bcrypt.compareSync(plain, hash);
+
+	if (success) {
+		bcryptCache[hash] = plain;
+	}
+
+	return success;
 }
 
 function basicAuth(authStr, node, msg) {
