@@ -5,8 +5,14 @@
 This Node-RED module performs [HTTP Basic authentication](https://developer.mozilla.org/docs/Web/HTTP/Authentication).
 It is to be used in conjunction with an [HTTP Input node](https://cookbook.nodered.org/http/create-an-http-endpoint).
 
-Supports [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) to store passwords
-(such as in the [Apache password format](https://httpd.apache.org/docs/current/misc/password_encryptions.html)).
+In other words, it allows putting a password on a Node-RED HTTP listener node.
+
+Note that this standard protocol sends passwords in plain-text by design, so HTTPS is required to ensure the security of the transmission.
+
+Supports [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) to store passwords on disc
+(such as in the [Apache htpasswd format](https://httpd.apache.org/docs/current/misc/password_encryptions.html)).
+Note that this node will cache the bcrypt checks in memory (until the flow is redeployed / restarted)
+to improve performance (bcrypt is slow by design, to protect passwords on disc).
 
 ## Example
 
