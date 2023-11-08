@@ -13,21 +13,32 @@ try {
  */
 const bcryptCache = {};
 
+/**
+ * Is the password matching the Modular Crypt Format of bcrypt
+ */
+function isBcryptMcf(hash) {
+	return (typeof hash === 'string') && hash.match(/^\$2[abxy]?\$/);
+}
+
 function passwordCompare(plain, hash) {
 	if (plain == '' || hash == '') {
 		return false;
 	}
-	if (plain === hash) {
+
+	// Test for plain-text passwords, excluding what looks like a bcrypt password (MCF)
+	if (plain === hash && !isBcryptMcf(plain)) {
 		return true;
 	}
 
 	// Compatibility work-around for 'bcrypt' library
 	hash = hash.replace(/^\$2[x|y]\$/, '$2b$');
 
+	// Do we already have a cache of the password check
 	if (plain === bcryptCache[hash]) {
 		return true;
 	}
 
+	// Test for bcrypt
 	const success = bcrypt.compareSync(plain, hash);
 
 	if (success) {
