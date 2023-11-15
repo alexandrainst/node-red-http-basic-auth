@@ -53,7 +53,7 @@ function basicAuth(authStr, node, msg) {
 	const username = values[0];
 	const password = values[1];
 
-	if (username == '' || username == '') {
+	if (username == '' || password == '') {
 		msg.authError = 'Invalid format for credentials!';
 		unAuth(node, msg);
 		return;
