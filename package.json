@@ -35,7 +35,7 @@
 		"url": "git+https://github.com/alexandrainst/node-red-http-basic-auth.git"
 	},
 	"engines": {
-		"node": ">=14"
+		"node": ">=16"
 	},
 	"node-red": {
 		"version": ">=3",
