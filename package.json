@@ -1,6 +1,6 @@
 {
 	"name": "@alexandrainst/node-red-http-basic-auth",
-	"version": "3.2.0",
+	"version": "3.3.0",
 	"description": "Node-RED node for HTTP Basic Authorization",
 	"keywords": [
 		"node-red",
@@ -32,7 +32,7 @@
 	"license": "GPL-2.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/alexandrainst/node-red-http-basic-auth.git"
+		"url": "git+https://github.com/alexandrainst/node-red-http-basic-auth.git"
 	},
 	"engines": {
 		"node": ">=12"
@@ -46,25 +46,25 @@
 		}
 	},
 	"dependencies": {
-		"bcryptjs": "^2.4.3"
+		"bcryptjs": "^3.0.3"
 	},
 	"optionalDependencies": {
-		"bcrypt": "^5.1.1"
+		"bcrypt": "^6.0.0"
 	},
 	"devDependencies": {
-		"eslint": "^9.8.0",
-		"@eslint/js": "^9.8.0",
-		"eslint-plugin-html": "^8.1.1",
-		"globals": "^15.9.0",
-		"markdownlint-cli": "^0.46.0",
-		"neostandard": "^0.11.2",
-		"node-red-contrib-mock-cli": "^1.4.3"
+		"eslint": "^10.8.0",
+		"@eslint/js": "^10.0.1",
+		"eslint-plugin-html": "^8.1.4",
+		"globals": "^17.9.0",
+		"markdownlint-cli2": "^0.23.2",
+		"neostandard": "^0.14.0-next",
+		"node-red-contrib-mock-cli": "^1.4.4"
 	},
 	"scripts": {
 		"eslint": "eslint .",
 		"eslint_fix": "eslint --fix .",
-		"markdownlint": "markdownlint '**/*.md'",
-		"markdownlint_fix": "markdownlint --fix '**/*.md'",
+		"markdownlint": "markdownlint-cli2",
+		"markdownlint_fix": "markdownlint-cli2 --fix",
 		"fix": "npm run rtlcss && npm run eslint_fix && npm run markdownlint_fix",
 		"pretest": "npm run eslint && npm run markdownlint",
 		"start": "node ./index.js",
