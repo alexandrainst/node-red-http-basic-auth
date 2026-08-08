@@ -1,6 +1,6 @@
 {
 	"name": "@alexandrainst/node-red-http-basic-auth",
-	"version": "3.3.0",
+	"version": "3.4.0",
 	"description": "Node-RED node for HTTP Basic Authorization",
 	"keywords": [
 		"node-red",
@@ -35,10 +35,10 @@
 		"url": "git+https://github.com/alexandrainst/node-red-http-basic-auth.git"
 	},
 	"engines": {
-		"node": ">=16"
+		"node": ">=12"
 	},
 	"node-red": {
-		"version": ">=3",
+		"version": ">=2",
 		"nodes": {
 			"http-basic-auth": "nodes/http-auth.js",
 			"http-basic-auth-file": "nodes/http-auth-file.js",

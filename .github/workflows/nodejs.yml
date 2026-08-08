@@ -36,7 +36,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 22.x]
+        node-version: [12.x, 22.x]
         # See Node.js upstream release schedule https://nodejs.org/en/about/releases/
         # Support oldest Node.js version that works with our tests.
         # Update package.json accordingly and with https://nodered.org/docs/faq/node-versions
