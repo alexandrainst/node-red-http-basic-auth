@@ -68,7 +68,7 @@
 		"fix": "npm run eslint_fix && npm run markdownlint_fix",
 		"pretest": "npm run eslint && npm run markdownlint",
 		"start": "node ./index.js",
-		"test-only": "./test.sh",
-		"test": "npm run test-only"
+		"test:only": "./test.sh",
+		"test": "npm run test:only"
 	}
 }
